@@ -15,8 +15,9 @@ class DictForm extends React.Component {
 		event.preventDefault();
 		fetch('http://142.11.236.67:3010/definition?def='+this.state.definition).then(function (data) {
 			data.json().then((value)=>{
-				console.log(value[1]);
-				Swal.fire({title: value[0].toString(), text: value[1].toString()});
+				let valueLines = value[1].toString().split('\n');
+				console.log(value[1],valueLines);
+				Swal.fire({title: value[0].toString(), html: value[1].toString().replace(/\n/g,'<br>')});
 			});
 		});
 	}
