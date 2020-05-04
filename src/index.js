@@ -17,9 +17,9 @@ class DictForm extends React.Component {
 			data.json().then((value)=>{
 				let valueLines = value[1].toString().split('\n');
 				let valueHtml = value[1].toString().replace(/\n/g,'<br>');
-				window.dictRegex = /^[a-z/s]*$/;
+				let dictRegex = /^[A-Za-z\s]*$/;
 			window.valueHTML = value[0];//.match(/^[a-z\s]*$/);
-				if (null != window.valueHTML.toString().match(window.dictRegex) && window.valueHTML.toString().match(window.dictRegex).length > 0) {
+				if (null != window.valueHTML.toString().match(dictRegex) && window.valueHTML.toString().match(dictRegex).length > 0) {
 				//if (valueHtml.match
 				console.log(value[1],valueLines);
 				Swal.fire({title: value[0].toString(), html: value[1].toString().replace(/\n/g,'<br>')});
